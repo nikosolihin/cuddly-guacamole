@@ -1,3 +1,8 @@
-import React from "react"
+import React from 'react';
+import Layout from 'components/shared/Layout';
 
-export default () => <div>Hello world!</div>
+export default ({ pageContext, location }) => (
+  <Layout location={location}>
+    <p>Hello World</p>
+  </Layout>
+);

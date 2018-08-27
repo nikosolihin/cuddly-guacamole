@@ -8,11 +8,13 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "auth0-js": "^9.7.3",
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
-    "gatsby": "next",
+    "gatsby": "^2.0.0-rc.0",
     "gatsby-plugin-emotion": "^2.0.0-rc.0",
-    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-react-helmet": "^3.0.0-rc.0",
+    "gatsby-plugin-resolve-src": "^2.0.0-beta.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-emotion": "^9.2.6",

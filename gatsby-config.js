@@ -3,5 +3,5 @@ module.exports = {
     title: 'YICF Giving Page',
     subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
   },
-  plugins: ['gatsby-plugin-react-helmet', 'gatsby-plugin-emotion'],
+  plugins: ['gatsby-plugin-react-helmet', 'gatsby-plugin-emotion', 'gatsby-plugin-resolve-src'],
 };
