@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "yicf-giving",
+  "description": "Donation page for YICF",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
@@ -8,8 +8,25 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "emotion": "^9.2.6",
+    "emotion-server": "^9.2.6",
     "gatsby": "next",
+    "gatsby-plugin-emotion": "^2.0.0-rc.0",
+    "gatsby-plugin-react-helmet": "^2.0.11",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "react-emotion": "^9.2.6",
+    "react-helmet": "^5.2.0",
+    "sanitize.css": "^7.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.2"
   }
 }
