@@ -13,12 +13,15 @@
     "emotion-server": "^9.2.6",
     "gatsby": "^2.0.0-rc.0",
     "gatsby-plugin-emotion": "^2.0.0-rc.0",
+    "gatsby-plugin-google-analytics": "^1.0.31",
     "gatsby-plugin-react-helmet": "^3.0.0-rc.0",
     "gatsby-plugin-resolve-src": "^2.0.0-beta.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-emotion": "^9.2.6",
+    "react-flickity-component": "^3.0.3",
     "react-helmet": "^5.2.0",
+    "react-spring": "^5.3.8",
     "sanitize.css": "^7.0.1"
   },
   "devDependencies": {

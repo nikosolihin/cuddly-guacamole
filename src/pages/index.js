@@ -1,8 +1,12 @@
 import React from 'react';
+import styled from 'react-emotion';
 import Layout from 'components/shared/Layout';
+import Projects from 'components/Projects';
 
-export default ({ pageContext, location }) => (
+const IndexPage = ({ pageContext, location }) => (
   <Layout location={location}>
-    <p>Hello World</p>
+    <Projects />
   </Layout>
 );
+
+export default IndexPage;
