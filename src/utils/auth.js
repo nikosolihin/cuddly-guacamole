@@ -86,7 +86,8 @@ export const getAccessToken = () => {
   return localStorage.getItem('access_token');
 };
 
-export const getUserInfo = () => new Promise((resolve, reject) => {
+export const getUserInfo = () =>
+  new Promise((resolve, reject) => {
     // If the user has already logged in, don’t bother fetching again.
     if (profile) {
       resolve(profile);

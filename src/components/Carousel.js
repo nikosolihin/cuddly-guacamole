@@ -3,6 +3,7 @@ import styled from 'react-emotion';
 import Flickity from 'react-flickity-component';
 
 const options = {
+  cellAlign: 'left',
   pageDots: false,
   prevNextButtons: false,
 };
@@ -15,12 +16,10 @@ const StyledFlickity = styled(Flickity)`
   background-color: transparent;
 `;
 
-export default () => (
+export default ({ children }) => (
   <Carousel>
     <StyledFlickity options={options} reloadOnUpdate>
-      <img src="https://via.placeholder.com/350x150" />
-      <img src="https://via.placeholder.com/350x150" />
-      <img src="https://via.placeholder.com/350x150" />
+      {children}
     </StyledFlickity>
   </Carousel>
 );

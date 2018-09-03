@@ -1,24 +1,22 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
-
-import { ProjectsIcon } from 'assets/mobile-nav-icons';
-import presets, { colors } from '../utils/presets';
-import typography, { rhythm, scale, options } from '../utils/typography';
+import { spacing, colors, from, weight } from 'styles';
+import Icon from './Icon';
 
 const StyledMobileNavItem = styled(Link)`
   flex: 0 0 25%;
+  color: ${colors['gray-600']};
+  font-size: 0.825rem;
+  font-weight: ${weight.bold};
   line-height: 1;
-  img {
-    display: block;
-    height: 3rem;
-    margin: 0 auto;
-  }
+  text-align: center;
+  padding: ${spacing.sm};
 `;
 
 const MobileNavItem = ({ linkTo, label, icon }) => (
   <StyledMobileNavItem to={linkTo}>
-    <img src={icon} alt={`${label} Icon`} />
+    <Icon icon={icon} />
     <div>{label}</div>
   </StyledMobileNavItem>
 );
@@ -31,13 +29,14 @@ const MobileNavigation = styled('div')`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  ${from.tablet`
-    background: dodgerblue;
-  `};
+  background-color: ${colors['gray-100']};
 `;
 
 export default () => (
   <MobileNavigation>
-    <MobileNavItem linkTo="/projects" label="Projects" icon={ProjectsIcon} />
+    <MobileNavItem linkTo="/projects" label="Projects" icon="activity" />
+    <MobileNavItem linkTo="/dashboard" label="My Profile" icon="user" />
+    <MobileNavItem linkTo="/help" label="Help" icon="help" />
+    <MobileNavItem linkTo="/more" label="More" icon="more" />
   </MobileNavigation>
 );
