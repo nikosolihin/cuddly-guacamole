@@ -119,9 +119,6 @@ injectGlobal`
     padding: ${spacing.sm};
     line-height: 1;
     transition: all .1s ease-out;
-    &:focus {
-      border: 0;
-    }
   }
 
   select {
