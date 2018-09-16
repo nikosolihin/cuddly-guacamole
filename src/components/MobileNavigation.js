@@ -16,7 +16,7 @@ const StyledMobileNavItem = styled(Link)`
 
 const MobileNavItem = ({ linkTo, label, icon }) => (
   <StyledMobileNavItem to={linkTo}>
-    <Icon icon={icon} />
+    <Icon name={icon} />
     <div>{label}</div>
   </StyledMobileNavItem>
 );

@@ -2,6 +2,7 @@
 import { css } from 'react-emotion';
 import { colors as colorsVar, spacing as spacingVar, weight as weightVar, breakpoints, fontStack } from './variables';
 import './global';
+import './modal';
 
 export const colors = colorsVar;
 

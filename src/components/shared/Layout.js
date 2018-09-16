@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import Helmet from 'react-helmet';
 import styled from 'react-emotion';
-import { StaticQuery, graphql } from 'gatsby';
+import { push } from 'gatsby';
 import 'sanitize.css';
-import UserContext, { defaultUserContext } from 'context/UserContext';
+import AlertContext, { defaultAlertContext } from 'context/AlertContext';
+import PaymentContext, { defaultPaymentContext } from 'context/PaymentContext';
 import { spacing } from 'styles';
+import { logout, getUserInfo } from 'utils/auth';
 import MobileNavigation from '../MobileNavigation';
+import Notification from '../Notification';
+import SiteMetadata from './SiteMetadata';
 import Header from './Header';
-import Banner from '../Banner';
 
 const Main = styled('main')`
   position: relative;
@@ -18,46 +20,53 @@ const Main = styled('main')`
 
 export default class Layout extends Component {
   state = {
+    alert: {
+      ...defaultAlertContext,
+      setAlert: message =>
+        this.setState(({ alert }) => ({
+          alert: { ...alert, message },
+        })),
+      resetAlert: () =>
+        this.setState(({ alert }) => ({
+          alert: { ...alert, message: '' },
+        })),
+    },
+    payment: {
+      ...defaultPaymentContext,
+      handleCreateCharge: () => {},
+    },
     user: {
-      ...defaultUserContext,
+      handleLogout: () => {
+        // this.setState({ user: defaultUserContext });
+        logout(() => push('/'));
+      },
     },
   };
 
+  componentDidMount = () =>
+    getUserInfo().then(profile => {
+      console.log(profile);
+      // Get past donations API call here, then set state...
+      // this.setState(state => ({
+      //   user: { ...state.user },
+      // }));
+    });
+
   render() {
-    const { user } = this.state;
-    const { location, children } = this.props;
+    const { alert, payment, user } = this.state;
+    const { children } = this.props;
     return (
-      <StaticQuery
-        query={graphql`
-          {
-            site {
-              meta: siteMetadata {
-                title
-                description
-                keywords
-              }
-            }
-          }
-        `}
-        render={({
-          site: {
-            meta: { title, description, keywords },
-          },
-        }) => (
-          <>
-            <Helmet lang="en" title={title || ''} defaultTitle={title} titleTemplate="%s | YICF">
-              <meta name="description" content={description} />
-              <meta name="keywords" content={keywords} />
-              <link rel="canonical" href={`https://gatsbyjs.org${location.pathname}`} />
-            </Helmet>
-            <UserContext.Provider value={user}>
-              <Header />
-              <Main>{children}</Main>
-              <MobileNavigation />
-            </UserContext.Provider>
-          </>
-        )}
-      />
+      <>
+        <SiteMetadata />
+        <PaymentContext.Provider value={payment}>
+          <AlertContext.Provider value={alert}>
+            <Header />
+            {alert.message && <Notification />}
+            <Main>{children}</Main>
+            <MobileNavigation />
+          </AlertContext.Provider>
+        </PaymentContext.Provider>
+      </>
     );
   }
 }

@@ -22,3 +22,9 @@ export const Lede = styled('p')`
   font-size: 1.25rem;
   line-height: 1.5;
 `;
+
+export const Text = styled('p')`
+  color: ${colors['gray-500']};
+  font-size: 1rem;
+  margin: 1rem 0 0;
+`;

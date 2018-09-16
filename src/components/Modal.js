@@ -1,49 +1,73 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import ReactModal from 'react-modal';
+import Icon from './Icon';
 
-const ModalButton = styled('button')`
-  background: #e2edff;
-  border: 2px solid #bad2fa;
-  border-radius: 1em;
-  cursor: pointer;
-  transition: background 0.15s ease-out;
-
-  &:hover {
-    background: #cbddfb;
-  }
-
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 4px currentColor;
-  }
+const Close = styled('button')`
+  background: purple;
 `;
 
-const ModalContent = styled('aside')``;
+const StyledModal = styled(ReactModal)``;
 
-export class Modal extends Component {
-  state = {
-    isOpen: false,
+export default class Modal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: props.initial,
+    };
+  }
+
+  componentDidMount = () => ReactModal.setAppElement('#___gatsby');
+
+  // Should this be in componenDidUpdate?
+  freeze = () => document.querySelector('html').classList.toggle('frozen');
+
+  // open = () => {
+  //   this.freeze();
+  //   this.setState({ isOpen: true });
+  // };
+
+  toggle = () => {
+    const { open } = this.state;
+    this.freeze();
+    this.setState({ open: !open });
   };
 
   render() {
-    const { label } = this.props;
+    const { open } = this.state;
+    const { label, button, children } = this.props;
     return (
-      <div>
-        <ModalButton>{label}</ModalButton>
-        <ModalContent>
-          <div className="c-modal">
-            <button className="c-modal__close">
-              <span className="u-hide-visually">Close</span>
-              <svg className="c-modal__close-icon" viewBox="0 0 40 40">
-                <path d="M 10,10 L 30,30 M 30,10 L 10,30" />
-              </svg>
-            </button>
-            <div className="c-modal__body">CONTENT WILL GO HERE</div>
-          </div>
-        </ModalContent>
-      </div>
+      <>
+        {/* {button(this.open)} */}
+        <StyledModal
+          isOpen={open}
+          contentLabel={label}
+          onRequestClose={this.toggle}
+          closeTimeoutMS={150}
+          portalClassName="Modal"
+          className="Modal-content"
+          overlayClassName="Modal-overlay"
+        >
+          {children({
+            open,
+            toggle: this.toggle,
+          })}
+          <Close onClick={this.close}>
+            <Icon icon="close" />
+          </Close>
+        </StyledModal>
+      </>
     );
   }
 }
 
-export default Modal;
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  initial: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+};
+
+Modal.defaultProps = {
+  initial: false,
+};

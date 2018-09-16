@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
+    url: 'https://giving.yicf.org',
     title: 'Donate - Empower the urban poor of Indonesia | YICF',
+    image: 'https://via.placeholder.com/1200x630',
     description:
       'Donate to charity and join us in our mission to end the water crisis. 100% of your donation brings clean water to people in need.',
     keywords:

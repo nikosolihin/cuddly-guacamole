@@ -12,9 +12,10 @@ const HTML = ({ htmlAttributes, headComponents, bodyAttributes, preBodyComponent
       <meta name="HandheldFriendly" content="True" />
       <meta name="application-name" content="YICF Giving" />
       <meta name="apple-mobile-web-app-title" content="YICF Giving" />
-      <meta name="og:site_name" content="YICF Giving" />
-      <meta name="og:type" content="website" />
       <meta property="fb:app_id" content="304225166758127" />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:site_name" content="Light of Dawn International" />
       <meta name="twitter:card" content="summary_large_image" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

@@ -33,6 +33,13 @@ injectGlobal`
     box-sizing: inherit;
   }
 
+  html {
+    overflow-y: auto;
+    &.frozen {
+      overflow-y: hidden;
+    }
+  }
+
   html, body {
     font: ${weight.normal} 18px/1.7 ${fontStack};
     color: ${colors['gray-700']};

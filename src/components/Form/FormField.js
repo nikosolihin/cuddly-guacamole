@@ -39,13 +39,23 @@ export default class FormField extends Component {
       isFocused: true,
     });
 
+  handleMoveFocus = e => {
+    const { max } = this.props;
+    const current = e.target.value.length + 1;
+    if (current === max) {
+      const { form } = e.target;
+      const index = Array.prototype.indexOf.call(form, e.target);
+      setTimeout(() => form.elements[index + 1].focus(), 125);
+    }
+  };
+
   render() {
     const { isFocused } = this.state;
     const { label, errorMsg, isTouched, ...props } = this.props;
     return (
       <FieldWrapper>
         <FormLabel isFocused={isFocused}>{label}</FormLabel>
-        <StyledField {...props} onFocus={this.handleFocus} />
+        <StyledField {...props} onFocus={this.handleFocus} onKeyPress={this.handleMoveFocus} />
         {errorMsg && isTouched && <FormError>{errorMsg}</FormError>}
       </FieldWrapper>
     );

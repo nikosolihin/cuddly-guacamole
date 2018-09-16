@@ -10,8 +10,8 @@ const Icon = styled('svg')`
   margin: 0 auto ${spacing.xs};
 `;
 
-export default ({ icon }) => (
+export default ({ name }) => (
   <Icon aria-hidden="true" role="presentation">
-    <use xlinkHref={`#icon-${icon}`} />
+    <use xlinkHref={`#icon-${name}`} />
   </Icon>
 );
